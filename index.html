@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#120e2b">
+<title>Chúc mừng sinh nhật!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="stars" id="stars"></div>
+<div class="dawn"></div>
+
+<h1 class="title"><small>Chúc mừng sinh nhật</small><b id="nm"></b></h1>
+
+<main class="stage" id="stage" aria-label="Bánh sinh nhật. Chạm để thổi nến.">
+  <div class="cake-wrap">
+    <div class="glow"></div>
+    <div class="plate"></div>
+    <div class="tier bottom"></div>
+    <div class="tier top"><div class="candles" id="candles"></div></div>
+  </div>
+</main>
+
+<p class="hint"><span class="a">Nhắm mắt và ước một điều nhé…</span><span class="b">Chạm vào màn hình để thổi nến</span></p>
+<form class="wishbox" id="wishbox" autocomplete="off">
+  <label for="wishInput">Ước một điều nhé…</label>
+  <input id="wishInput" type="text" maxlength="200" placeholder="Điều ước của bạn" enterkeyhint="send">
+  <button type="submit">Gửi điều ước</button>
+</form>
+<p class="thanks" id="thanks"><b>Điều ước của bạn đã được vũ trụ ghi nhận.</b><span>Chúc bạn có một ngày sinh nhật thật hạnh phúc.</span></p>
+<button class="again" id="again" type="button">Thổi lại lần nữa</button>
+</body>
+<script src="./script.js"></script>
+</html>

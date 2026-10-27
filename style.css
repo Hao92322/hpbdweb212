@@ -1,0 +1,174 @@
+:root{
+  --night:#120e2b; --night2:#1d1545; --cream:#fff1dc; --pink:#ff8fb3;
+  --choc:#5a2f2a; --amber:#ffb23e; --ink:#fff7ec;
+  --script:"Dancing Script","Segoe Script","Brush Script MT",cursive;
+  --sans:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:var(--sans);color:var(--ink);overflow:hidden;cursor:pointer;
+  background:radial-gradient(ellipse at 50% 80%,var(--night2) 0%,var(--night) 70%);
+  -webkit-tap-highlight-color:transparent;user-select:none;
+}
+
+/* ---------- Bầu trời & bình minh ---------- */
+.dawn{position:fixed;inset:0;opacity:0;transition:opacity 2.8s ease;
+  background:radial-gradient(ellipse at 50% 75%,#ffb36b 0%,#f0648a 32%,#8a3a9a 62%,#2c1857 100%)}
+.lit .dawn{opacity:1}
+.stars{position:fixed;inset:0;transition:opacity 2s}
+.lit .stars{opacity:.25}
+.star{position:absolute;width:var(--z);height:var(--z);border-radius:50%;background:#fff;
+  animation:twinkle var(--t) ease-in-out var(--d) infinite}
+@keyframes twinkle{0%,100%{opacity:.15}50%{opacity:.9}}
+
+/* ---------- Tiêu đề ---------- */
+.title{position:fixed;top:max(7vh,28px);left:0;right:0;text-align:center;z-index:5;
+  padding:0 20px;pointer-events:none;opacity:0;transform:translateY(14px) scale(.96);
+  transition:opacity 1.4s ease 1.2s,transform 1.4s cubic-bezier(.2,.8,.2,1) 1.2s}
+.lit .title{opacity:1;transform:none}
+.title small{display:block;font-family:var(--script);font-weight:600;
+  font-size:clamp(1.5rem,5.4vw,2.4rem);letter-spacing:.01em;opacity:.95}
+.title b{display:block;font-family:var(--script);font-weight:700;line-height:1.05;
+  font-size:clamp(3rem,13vw,6.4rem);text-shadow:0 4px 30px rgba(120,20,70,.55);word-break:break-word}
+
+/* ---------- Sân khấu ---------- */
+.stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:4}
+.cake-wrap{position:relative;width:320px;height:330px;margin-top:6vh;
+  animation:rise-in 1.6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise-in{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+.glow{position:absolute;left:50%;top:-40px;width:520px;height:520px;margin-left:-260px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,178,62,.38) 0%,rgba(255,140,80,.12) 38%,transparent 66%);
+  transition:opacity 1.2s ease;animation:breathe 3s ease-in-out infinite;pointer-events:none}
+.blown .glow{opacity:0}
+@keyframes breathe{50%{transform:scale(1.07)}}
+
+.plate{position:absolute;left:50%;bottom:0;width:330px;height:22px;margin-left:-165px;border-radius:50%;
+  background:linear-gradient(#f4eefc,#b9aedb);box-shadow:0 14px 28px rgba(0,0,0,.45)}
+.tier{position:absolute;left:50%;transform:translateX(-50%);border-radius:14px 14px 10px 10px}
+.tier::before{content:"";position:absolute;left:-3px;right:-3px;top:-6px;height:24px;
+  background:var(--frost);border-radius:14px 14px 4px 4px}
+.tier::after{content:"";position:absolute;left:-3px;right:-3px;top:16px;height:28px;
+  background:
+   radial-gradient(ellipse 9px 18px at 14px 0,var(--frost) 98%,transparent) 0 0/38px 28px repeat-x,
+   radial-gradient(ellipse 7px 11px at 33px 0,var(--frost) 98%,transparent) 0 0/38px 28px repeat-x}
+.bottom{--frost:var(--cream);bottom:12px;width:270px;height:104px;
+  background:
+   radial-gradient(circle,var(--pink) 2px,transparent 3px) 0 0/37px 29px,
+   radial-gradient(circle,#ffd36b 2px,transparent 3px) 13px 17px/41px 33px,
+   linear-gradient(#7a4033,var(--choc))}
+.top{--frost:var(--pink);bottom:112px;width:190px;height:78px;
+  background:linear-gradient(#fff3df,#f2d3a6);box-shadow:0 10px 18px rgba(0,0,0,.18)}
+
+/* ---------- Nến ---------- */
+.candles{position:absolute;left:8px;right:8px;bottom:100%;margin-bottom:2px;
+  display:flex;justify-content:space-evenly;align-items:flex-end;z-index:2}
+.candle{position:relative;width:8px;height:48px;border-radius:3px 3px 1px 1px;
+  background:repeating-linear-gradient(-45deg,#fff 0 6px,var(--pink) 6px 12px);
+  box-shadow:inset -2px 0 2px rgba(0,0,0,.12)}
+.candle::before{content:"";position:absolute;left:3px;top:-5px;width:2px;height:6px;background:#2b1b18;border-radius:1px}
+.flame{position:absolute;left:50%;top:-30px;width:15px;height:27px;margin-left:-7.5px;
+  border-radius:50% 50% 50% 50%/62% 62% 38% 38%;transform-origin:50% 100%;
+  background:radial-gradient(ellipse at 50% 78%,#fff7c2 0%,#ffd45a 32%,var(--amber) 62%,#ff6a2b 100%);
+  box-shadow:0 0 14px 5px rgba(255,170,60,.55),0 0 38px 14px rgba(255,120,40,.28);
+  animation:flicker .22s ease-in-out var(--o) infinite alternate}
+@keyframes flicker{
+  0%{transform:scale(1,1) rotate(-2deg)}
+  50%{transform:scale(.93,1.07) rotate(1.5deg)}
+  100%{transform:scale(1.04,.95) rotate(3deg)}}
+.puff .flame{animation:lean .5s ease-in forwards}
+@keyframes lean{to{transform:scale(.8,.75) rotate(34deg) translateX(3px)}}
+.out .flame{animation:snuff .3s ease-in forwards}
+@keyframes snuff{from{opacity:1;transform:scale(.8,.7) rotate(34deg)}to{opacity:0;transform:scale(0) rotate(50deg)}}
+.smoke{position:absolute;left:50%;top:-6px;width:7px;height:46px;margin-left:-3.5px;border-radius:50%;
+  background:linear-gradient(to top,rgba(235,230,255,.7),rgba(235,230,255,0));filter:blur(3px);opacity:0;transform-origin:50% 100%}
+.out .smoke{animation:smoke 2.6s ease-out forwards}
+@keyframes smoke{
+  0%{opacity:0;transform:translate(0,0) scale(.6,.5)}
+  15%{opacity:.85}
+  50%{transform:translate(-6px,-34px) scale(1.4,1.1)}
+  100%{opacity:0;transform:translate(10px,-82px) scale(2.6,1.6)}}
+
+/* ---------- Gợi ý ---------- */
+.hint{position:fixed;left:0;right:0;bottom:max(7vh,34px);text-align:center;z-index:6;pointer-events:none;
+  height:3rem;transition:opacity .6s}
+.hint span{position:absolute;left:0;right:0;opacity:0;font-size:1.02rem;letter-spacing:.02em;padding:0 20px}
+.hint .a{font-family:var(--script);font-size:1.7rem;animation:hint-a 4.2s ease both .8s}
+@keyframes hint-a{0%{opacity:0;transform:translateY(8px)}18%,72%{opacity:.95;transform:none}100%{opacity:0}}
+.hint .b{animation:hint-b 2.4s ease-in-out infinite 5.2s}
+@keyframes hint-b{0%,100%{opacity:.35}50%{opacity:1}}
+.blown .hint{opacity:0}
+
+/* ---------- Lời chúc bay lên ---------- */
+.wish{position:fixed;bottom:-80px;z-index:3;pointer-events:none;
+  animation:rise var(--dur) linear forwards}
+@keyframes rise{
+  0%{transform:translateY(0);opacity:0}
+  6%{opacity:1}
+  88%{opacity:1}
+  100%{transform:translateY(-118vh);opacity:0}}
+.wish span{display:inline-block;max-width:min(260px,72vw);padding:.55em 1.1em;border-radius:999px;
+  background:rgba(255,255,255,.17);border:1px solid rgba(255,255,255,.4);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  box-shadow:0 8px 24px rgba(80,10,60,.25);font-size:var(--fs);font-weight:500;line-height:1.35;text-align:center;
+  animation:sway var(--sw) ease-in-out infinite alternate}
+@keyframes sway{from{transform:translateX(-22px) rotate(-2.5deg)}to{transform:translateX(22px) rotate(2.5deg)}}
+
+/* ---------- Pháo giấy ---------- */
+.confetti{position:fixed;left:50%;top:48%;width:var(--w);height:var(--h);background:var(--c);z-index:7;
+  pointer-events:none;border-radius:var(--br);animation:burst var(--dur) cubic-bezier(.15,.7,.3,1) forwards}
+@keyframes burst{
+  0%{transform:translate(0,0) rotate(0);opacity:1}
+  30%{transform:translate(var(--dx),var(--up)) rotate(calc(var(--r)*.5))}
+  100%{transform:translate(calc(var(--dx)*1.25),105vh) rotate(var(--r));opacity:.9}}
+
+/* ---------- Nút chơi lại ---------- */
+.again{position:fixed;left:50%;bottom:max(5vh,26px);transform:translate(-50%,10px);z-index:8;
+  font:500 .95rem var(--sans);color:var(--ink);padding:.7em 1.5em;border-radius:999px;cursor:pointer;
+  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  opacity:0;pointer-events:none;transition:opacity .8s,transform .8s,background .2s}
+.again.show{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+.again:hover{background:rgba(255,255,255,.28)}
+.again:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+/* ---------- Ô nhập điều ước ---------- */
+.cake-wrap{transition:margin-top 1.8s ease}
+.sent .cake-wrap{margin-top:-6vh}
+.wishbox{position:fixed;left:50%;bottom:max(5vh,28px);width:min(92vw,440px);transform:translate(-50%,14px);z-index:8;
+  display:flex;gap:8px;padding:7px;border-radius:999px;background:rgba(60,15,70,.4);
+  border:1px solid rgba(255,255,255,.5);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  opacity:0;pointer-events:none;transition:opacity .9s,transform .9s,border-color .2s}
+.wishbox.show{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+.wishbox:focus-within{border-color:#fff}
+.wishbox label{position:absolute;left:0;right:0;bottom:100%;margin-bottom:.5rem;text-align:center;
+  font-family:var(--script);font-weight:600;font-size:1.7rem;text-shadow:0 2px 14px rgba(90,20,80,.6)}
+.wishbox input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--ink);
+  font:400 1rem var(--sans);padding:.6em 1em;-webkit-user-select:text;user-select:text}
+.wishbox input::placeholder{color:rgba(255,247,236,.7)}
+.wishbox button{border:0;border-radius:999px;padding:.6em 1.2em;font:500 .95rem var(--sans);cursor:pointer;
+  background:var(--cream);color:#5a2350;white-space:nowrap}
+.wishbox button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.thanks{position:fixed;left:0;right:0;bottom:max(12vh,90px);text-align:center;z-index:6;padding:0 22px;
+  pointer-events:none;opacity:0;transform:translateY(10px);transition:opacity 1.8s,transform 1.8s}
+.thanks.show{opacity:1;transform:none}
+.thanks b{display:block;font-family:var(--script);font-weight:700;font-size:clamp(1.5rem,5.4vw,2.2rem);
+  line-height:1.2;text-shadow:0 2px 18px rgba(90,20,80,.65)}
+.thanks span{display:block;margin-top:.45rem;font-size:.98rem;text-shadow:0 1px 10px rgba(90,20,80,.6)}
+
+/* ---------- Sao băng ---------- */
+.meteor{position:fixed;left:var(--x);top:var(--y);width:150px;height:2px;z-index:9;pointer-events:none;
+  border-radius:2px;background:linear-gradient(to right,#fff,rgba(255,255,255,0));
+  box-shadow:0 0 10px 2px rgba(255,255,255,.55);opacity:0;
+  animation:meteor var(--du) ease-in var(--dl) forwards}
+@keyframes meteor{
+  0%{opacity:0;transform:translate(0,0) rotate(-45deg)}
+  10%{opacity:1}
+  100%{opacity:0;transform:translate(-95vh,95vh) rotate(-45deg)}}
+
+@media (max-width:420px){.cake-wrap{transform:scale(.84)}}
+@media (max-height:560px){.cake-wrap{transform:scale(.7);margin-top:12vh}}
+@media (prefers-reduced-motion:reduce){
+  .star,.glow,.hint .b,.wish span{animation:none}
+  .flame{animation-duration:.8s}
+}
